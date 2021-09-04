@@ -1,0 +1,46 @@
+﻿@model AT_Pedro_Paiva.Models.AmigoModel
+
+@{
+    ViewBag.Title = "DetalharAmigo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DetalharAmigo</h2>
+<hr />
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sobrenome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sobrenome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.aniversario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aniversario)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href='@Url.Action("ListaAmigo", "Amigo")' class="btn btn-default btn-md">
+        <span class="glyphicon glyphicon-arrow-left"></span> Voltar
+    </a>
+    <a href='@Url.Action("EditarAmigo", "Amigo", new { id = Model.id })' class="btn btn-warning btn-md">
+        <span class="glyphicon glyphicon-wrench"></span> Editar
+    </a>
+</p>

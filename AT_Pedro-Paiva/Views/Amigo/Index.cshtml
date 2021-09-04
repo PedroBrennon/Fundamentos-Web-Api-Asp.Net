@@ -1,0 +1,78 @@
+﻿
+@model AT_Pedro_Paiva.Models.AmigoModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p></p>
+
+<a href='@Url.Action("AdicionarAmigo", "Amigo")' class="btn btn-primary btn-md">
+    <span class="glyphicon glyphicon-plus-sign"></span> Adicionar Amigo
+</a>
+
+<h2>Aniversariantes do dia</h2>
+<table class="table table-responsive table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sobrenome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.aniversario)
+        </th>
+    </tr>
+
+    @foreach (var item in Model.amigosDoDia)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sobrenome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.aniversario)
+            </td>
+        </tr>
+
+    }
+    @if (Model.amigosDoDia.Count().Equals(0))
+    {
+         <tr><td colspan="3" align="center">Não existem aniversariantes no dia de hoje</td></tr>
+    }
+</table>
+
+<h2>Aniversariantes mais próximos</h2>
+<table class="table table-responsive table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sobrenome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.aniversario)
+        </th>
+    </tr>
+
+    @foreach (var item in Model.amigosOrdenados)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sobrenome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.aniversario)
+            </td>
+        </tr>
+    }
+</table>

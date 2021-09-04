@@ -1,0 +1,51 @@
+﻿@model AT_Pedro_Paiva.Models.AmigoModel
+
+@{
+    ViewBag.Title = "DeletarAmigo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Excluir Amigo</h2>
+
+<h3>Você tem certeza que deseja excluir seu amigo?</h3>
+<div>
+    <h4>AmigoModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sobrenome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sobrenome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.aniversario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aniversario)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <a href='@Url.Action("ListaAmigo", "Amigo")' class="btn btn-default btn-md">
+                <span class="glyphicon glyphicon-arrow-left"></span> Voltar
+            </a>
+            <input type="submit" value="Excluir" class="btn btn-danger" />
+        </div>
+    }
+</div>

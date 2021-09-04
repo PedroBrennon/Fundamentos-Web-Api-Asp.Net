@@ -1,0 +1,64 @@
+﻿@model IEnumerable<AT_Pedro_Paiva.Models.AmigoModel>
+
+@{
+    ViewBag.Title = "ListaAmigo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de Amigos</h2>
+
+<p>
+    <a href='@Url.Action("AdicionarAmigo", "Amigo")' class="btn btn-primary btn-md">
+        <span class="glyphicon glyphicon-plus-sign"></span> Adicionar Amigo
+    </a>
+
+	@using (Html.BeginForm())
+    {
+	<p>
+		<label>Pesquisar amigo: @Html.TextBox("busca", null, new { @class = "form-control" })</label>
+        <input type="submit" class="btn btn-info" value="Buscar">
+	</p>
+	}
+</p>
+
+	<table class="table table-responsive table-striped">
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.nome)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.sobrenome)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.aniversario)
+			</th>
+			<th></th>
+		</tr>
+
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.nome)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.sobrenome)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.aniversario)
+				</td>
+				<td>
+                    <a href='@Url.Action("EditarAmigo", "Amigo", new { id = item.id })' class="btn btn-warning btn-md">
+                        <span class="glyphicon glyphicon-wrench"></span> Editar
+                    </a>
+                    <a href='@Url.Action("DetalharAmigo", "Amigo", new { id = item.id })' class="btn btn-success btn-md">
+                        <span class="glyphicon glyphicon-list-alt"></span> Detalhes
+                    </a>
+                    <a href='@Url.Action("DeletarAmigo", "Amigo", new { id = item.id })' class="btn btn-danger btn-md">
+                        <span class="glyphicon glyphicon-trash"></span> Excluir
+                    </a>
+				</td>
+			</tr>
+		}
+
+	</table>
